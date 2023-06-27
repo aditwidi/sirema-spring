@@ -49,10 +49,6 @@ public class StaffController {
         // Adding the top 5 requests to the model
         List<RequestDto> top8Requests = requestService.findTop8RequestsOrderByCreatedAtDesc();
         model.addAttribute("top8Requests", top8Requests);
-
-        // Adding the notifications for the logged-in user to the model
-        List<NotificationDto> userNotifications = notificationService.findTop4NotificationsByUserId(user.getId());
-        model.addAttribute("userNotifications", userNotifications);
         return "staff/dashboard";
     }
 }

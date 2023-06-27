@@ -1,79 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-  <title>Sirema - Register</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=0" name="viewport">
+    <title>Sirema - Register</title>
 
-  <link rel="shortcut icon" th:href="@{/images/favicon.png}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
 
-  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 
-  <link rel="stylesheet" th:href="@{/css/feather.css}">
+    <link rel="stylesheet" th:href="@{/css/feather.css}">
 
-  <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
-  <link rel="stylesheet" th:href="@{/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/all.min.css}">
 
-  <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
 <div class="main-wrapper login-body">
-  <div class="login-wrapper">
-    <div class="container">
-      <div class="loginbox">
-        <div class="login-left">
-          <img class="img-fluid" th:src="@{/images/login.png}" alt="Logo">
-        </div>
-        <div class="login-right">
-          <div class="login-right-wrap">
-            <h1>Sign Up Staff</h1>
-            <p class="account-subtitle">Enter details to create your account</p>
-
-            <form   method="post"
-                    role="form"
-                    th:action="@{/registration-staff}"
-                    th:object="${user}">
-              <div th:if="${param.success}">
-                <div class="alert alert-success">
-                  Registration successful !!!
+    <div class="login-wrapper">
+        <div class="container">
+            <div class="loginbox">
+                <div class="login-left">
+                    <img alt="Logo" class="img-fluid" th:src="@{/images/login.png}">
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Name <span class="login-danger">*</span></label>
-                <input class="form-control" type="text" id="name" name="name" required>
-                <span class="profile-views"><i class="fas fa-user-circle"></i></span>
-              </div>
-              <div class="form-group">
-                <label for="email">Email <span class="login-danger">*</span></label>
-                <input class="form-control" type="text" id="email" name="email" required>
-                <span class="profile-views"><i class="fas fa-envelope"></i></span>
-              </div>
-              <div class="form-group">
-                <label for="password">Password <span class="login-danger">*</span></label>
-                <input class="form-control pass-input" type="text" id="password" name="password" required>
-                <span class="profile-views feather-eye toggle-password"></span>
-              </div>
-              <div class="form-group">
-                <label>Confirm password <span class="login-danger">*</span></label>
-                <input class="form-control pass-confirm" type="text" required>
-                <span class="profile-views feather-eye reg-toggle-password"></span>
-              </div>
-              <div class=" dont-have">Sudah punya Akun? <a th:href="@{/login}">Login</a></div>
-              <div class="form-group mb-0">
-                <input type="hidden" id="createdat" name="createdAt">
-                <button class="btn btn-primary btn-block" type="submit">Register as Staff</button>
-              </div>
-            </form>
+                <div class="login-right">
+                    <div class="login-right-wrap">
+                        <h1>Sign Up Staff</h1>
+                        <p class="account-subtitle">Enter details to create your account</p>
 
-          </div>
+                        <form method="post"
+                              role="form"
+                              th:action="@{/registration-staff}"
+                              th:object="${user}">
+                            <div th:if="${param.success}">
+                                <div class="alert alert-success">
+                                    Registration successful !!!
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name <span class="login-danger">*</span></label>
+                                <input class="form-control" id="name" name="name" required type="text">
+                                <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span class="login-danger">*</span></label>
+                                <input class="form-control" id="email" name="email" required type="text">
+                                <span class="profile-views"><i class="fas fa-envelope"></i></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password <span class="login-danger">*</span></label>
+                                <input class="form-control pass-input" id="password" name="password" required
+                                       type="text">
+                                <span class="profile-views feather-eye toggle-password"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm password <span class="login-danger">*</span></label>
+                                <input class="form-control pass-confirm" required type="text">
+                                <span class="profile-views feather-eye reg-toggle-password"></span>
+                            </div>
+                            <div class=" dont-have">Sudah punya Akun? <a th:href="@{/login}">Login</a></div>
+                            <div class="form-group mb-0">
+                                <input id="createdat" name="createdAt" type="hidden">
+                                <button class="btn btn-primary btn-block" type="submit">Register as Staff</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 
