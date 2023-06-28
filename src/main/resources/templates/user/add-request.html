@@ -96,6 +96,12 @@
                             <li><a class="active" th:href="@{/user/requests/add-request}">Request Add</a></li>
                         </ul>
                     </li>
+                    <li class="menu-title">
+                        <span>Calendar</span>
+                    </li>
+                    <li>
+                        <a th:href="@{/user/calendar-requests}"><i class="fas fa-calendar"></i> <span> Calendar Kegiatan</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -118,7 +124,6 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-
                             <form th:action="@{/user/add-request/submit}" th:object='${request}' method="post">
                                 <div class="row">
                                     <div class="col-12">

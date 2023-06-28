@@ -8,14 +8,13 @@ import java.util.List;
 
 public interface RequestService {
     public List<RequestDto> getRequests();
+    public List<RequestDto> searchRequests(String namaPengaju, String bentukRequest, String judulRequest);
 
     public List<RequestDto> findRequestsByUserId(Long userId);
 
     public List<RequestDto> findTop5RequestsByUser(Long userId);
 
     public  List<RequestDto> findTop8RequestsOrderByCreatedAtDesc();
-
-    public List<RequestDto> searchRequests(String searchTerm);
 
     public RequestDto getRequest(Long requestId);
 

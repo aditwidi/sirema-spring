@@ -6,6 +6,7 @@ import com.aditya.sirema.entity.Request.Status;
 import com.aditya.sirema.entity.User;
 import com.aditya.sirema.mapper.RequestMapper;
 import com.aditya.sirema.repository.RequestRepository;
+import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,17 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public List<RequestDto> searchRequests(String namaPengaju, String bentukRequest, String judulRequest) {
+        List<Request> requests = requestRepository.findAll();
+        return requests.stream()
+                .filter(r -> (namaPengaju == null || r.getNamaPengaju().toLowerCase().contains(namaPengaju.toLowerCase()))
+                        && (bentukRequest == null || r.getBentukRequest().toString().toLowerCase().contains(bentukRequest.toLowerCase()))
+                        && (judulRequest == null || r.getJudulRequest().toLowerCase().contains(judulRequest.toLowerCase())))
+                .map(RequestMapper::mapToRequestDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<RequestDto> findRequestsByUserId(Long userId) {
         User user = userService.findUserById(userId);
         List<Request> requests = requestRepository.findByUser(user);
@@ -56,12 +68,6 @@ public class RequestServiceImpl implements RequestService {
         return requests.stream()
                 .map(RequestMapper::mapToRequestDto)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<RequestDto> searchRequests(String searchTerm) {
-        List<Request> requests = requestRepository.findByJudulRequestContaining(searchTerm);
-        return RequestMapper.mapToRequestDtoList(requests);
     }
 
     @Override

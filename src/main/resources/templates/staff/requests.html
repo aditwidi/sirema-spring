@@ -90,6 +90,12 @@
                     <li class="active">
                         <a th:href="@{/staff/requests}"><i class="fas fa-clipboard"></i> <span> List Requests</span></a>
                     </li>
+                    <li class="menu-title">
+                        <span>Calendar</span>
+                    </li>
+                    <li>
+                        <a th:href="@{/staff/calendar-requests}"><i class="fas fa-calendar"></i> <span> Calendar Requests</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -109,24 +115,19 @@
             </div>
             <div class="student-group-form">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
                             <input class="form-control" placeholder="Search by Nama Pengaju ..." type="text">
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
                             <input class="form-control" placeholder="Search by Bentuk Request ..." type="text">
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
                             <input class="form-control" placeholder="Search by Judul Request ..." type="text">
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="search-student-btn">
-                            <button class="btn btn-primary" type="btn">Search</button>
                         </div>
                     </div>
                 </div>
@@ -141,8 +142,8 @@
                                         <h3 class="page-title">Requests</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        <a class="btn btn-outline-primary me-2" href="#"><i class="fas fa-download"></i>
-                                            Download</a>
+                                        <button class="btn btn-outline-primary me-2" onclick="exportTable()"><i class="fas fa-download"></i>
+                                            Download</button>
                                     </div>
                                 </div>
                             </div>
@@ -200,11 +201,14 @@
         </footer>
     </div>
 </div>
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/js/feather.min.js}"></script>
 <script th:src="@{/js/jquery.slimscroll.min.js}"></script>
 <script th:src="@{/js/datatables.min.js}"></script>
-<script th:src="@{/js/script.js}"></script>>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/search-request-staff.js}"></script>
+<script th:src="@{/js/request-export.js}"></script>
 </body>
 </html>

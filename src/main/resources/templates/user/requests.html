@@ -95,6 +95,12 @@
                             <li><a th:href="@{/user/requests/add-request}">Request Add</a></li>
                         </ul>
                     </li>
+                    <li class="menu-title">
+                        <span>Calendar</span>
+                    </li>
+                    <li>
+                        <a th:href="@{/user/calendar-requests}"><i class="fas fa-calendar"></i> <span> Calendar Kegiatan</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -114,24 +120,19 @@
             </div>
             <div class="student-group-form">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
-                            <input id="namaPengaju" class="form-control" placeholder="Search by Nama Pengaju ..." type="text">
+                            <input class="form-control" placeholder="Search by Nama Pengaju ..." type="text">
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
-                            <input id="bentukRequest" class="form-control" placeholder="Search by Bentuk Request ..." type="text">
+                            <input class="form-control" placeholder="Search by Bentuk Request ..." type="text">
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
-                            <input id="judulRequest" class="form-control" placeholder="Search by Judul Request ..." type="text">
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="search-student-btn">
-                            <button class="btn btn-primary" type="button" onclick="searchRequest()">Search</button>
+                            <input class="form-control" placeholder="Search by Judul Request ..." type="text">
                         </div>
                     </div>
                 </div>
@@ -146,14 +147,13 @@
                                         <h3 class="page-title">Requests</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        <a class="btn btn-outline-primary me-2" href="#"><i class="fas fa-download"></i>
-                                            Download</a>
-                                        <a class="btn btn-primary" th:href="@{/user/requests/add-request}"><i
-                                                class="fas fa-plus"></i></a>
+                                        <button class="btn btn-outline-primary me-2" onclick="exportTable('${user.getId()}')"><i class="fas fa-download"></i>
+                                            Download</button>
+                                        <a class="btn btn-primary" th:href="@{/user/requests/add-request}"><i class="fas fa-plus"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                            <table id="requestTable" class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                 <thead class="student-thread">
                                 <tr>
                                     <th class="text-center">Nama Pengaju</th>
@@ -213,12 +213,14 @@
         </footer>
     </div>
 </div>
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/js/feather.min.js}"></script>
 <script th:src="@{/js/jquery.slimscroll.min.js}"></script>
 <script th:src="@{/js/datatables.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
-<script th:src="@{/js/searchRequest.js}"></script>
+<script th:src="@{/js/search-request.js}"></script>
+<script th:src="@{/js/request-export.js}"></script>
 </body>
 </html>
