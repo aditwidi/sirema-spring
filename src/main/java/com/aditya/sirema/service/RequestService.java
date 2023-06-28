@@ -8,7 +8,10 @@ import java.util.List;
 
 public interface RequestService {
     public List<RequestDto> getRequests();
+
     public List<RequestDto> searchRequests(String namaPengaju, String bentukRequest, String judulRequest);
+
+    public List<RequestDto> searchRequestsUser(String namaPengaju, String bentukRequest, String judulRequest, Long userId);
 
     public List<RequestDto> findRequestsByUserId(Long userId);
 

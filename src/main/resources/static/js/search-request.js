@@ -4,11 +4,11 @@ $(document).ready(function() {
         var bentukRequest = $("input[placeholder='Search by Bentuk Request ...']").val().toLowerCase();
         var judulRequest = $("input[placeholder='Search by Judul Request ...']").val().toLowerCase();
         $.ajax({
-            url: "/searchRequests",
+            url: "/api/requests/user/search",
             data: {
                 namaPengaju: namaPengaju,
                 bentukRequest: bentukRequest,
-                judulRequest: judulRequest
+                judulRequest: judulRequest,
             },
             success: function(response) {
                 // Clear the existing table

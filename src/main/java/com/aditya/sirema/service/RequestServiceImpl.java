@@ -45,6 +45,18 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public List<RequestDto> searchRequestsUser(String namaPengaju, String bentukRequest, String judulRequest, Long userId) {
+        List<Request> requests = requestRepository.findAll();
+        return requests.stream()
+                .filter(r -> (userId == null || r.getUser().getId().equals(userId))
+                        && (namaPengaju == null || r.getNamaPengaju().toLowerCase().contains(namaPengaju.toLowerCase()))
+                        && (bentukRequest == null || r.getBentukRequest().toString().toLowerCase().contains(bentukRequest.toLowerCase()))
+                        && (judulRequest == null || r.getJudulRequest().toLowerCase().contains(judulRequest.toLowerCase())))
+                .map(RequestMapper::mapToRequestDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<RequestDto> findRequestsByUserId(Long userId) {
         User user = userService.findUserById(userId);
         List<Request> requests = requestRepository.findByUser(user);
