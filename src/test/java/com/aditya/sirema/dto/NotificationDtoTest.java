@@ -2,8 +2,6 @@ package com.aditya.sirema.dto;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class NotificationDtoTest {
 
     @Test
