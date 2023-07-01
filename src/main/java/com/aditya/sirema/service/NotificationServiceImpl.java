@@ -22,21 +22,12 @@ public class NotificationServiceImpl implements NotificationService {
     private UserService userService;
 
     @Override
-    public List<NotificationDto> getAllNotifications() {
-        List<Notification> notifications = notificationRepository.findAll();
-        return notifications.stream()
-                .map(NotificationMapper::mapToNotificationDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public void createNotification(NotificationDto notificationDto) {
         Notification notification = NotificationMapper.mapToNotification(notificationDto);
         notification.setUsername(notificationDto.getUser().getName()); // Set username from UserDto
         notification.setTimestamp(LocalDateTime.now()); // Set the current timestamp
         notificationRepository.save(notification);
     }
-
 
     @Override
     public List<NotificationDto> findTop4NotificationsByUserId(Long userId) {
