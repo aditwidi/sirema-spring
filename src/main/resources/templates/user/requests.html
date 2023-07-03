@@ -147,8 +147,7 @@
                                         <h3 class="page-title">Requests</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        <button class="btn btn-outline-primary me-2" onclick="exportTable('${user.getId()}')"><i class="fas fa-download"></i>
-                                            Download</button>
+                                        <button class="btn btn-outline-primary me-2" th:data-user-id="${user.getId()}" onclick="exportTable(this)"><i class="fas fa-download"></i>Download</button>
                                         <a class="btn btn-primary" th:href="@{/user/requests/add-request}"><i class="fas fa-plus"></i></a>
                                     </div>
                                 </div>
@@ -221,6 +220,6 @@
 <script th:src="@{/js/datatables.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
 <script th:src="@{/js/search-request.js}"></script>
-<script th:src="@{/js/request-export.js}"></script>
+<script th:src="@{/js/request-export-user.js}"></script>
 </body>
 </html>

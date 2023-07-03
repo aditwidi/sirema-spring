@@ -1,7 +1,23 @@
-async function exportTable(userId) {
+async function exportTable(buttonElement) {
+    const userId = buttonElement.getAttribute('data-user-id');
+    console.log('User ID:', userId);
+
+    // Construct the URL
+    const url = `/api/requests/user?userId=${userId}`;
+    console.log('Constructed URL:', url);
+
     // Fetch data from back-end
-    const response = await fetch('/api/requests');
+    const response = await fetch(url);
+    console.log('Response Status:', response.status);
+
+    // Check if the response is OK
+    if (!response.ok) {
+        console.error('Network response was not ok');
+        return;
+    }
+
     const requestData = await response.json();
+    console.log('Response Data:', requestData);
 
     // Prepare headers
     const wsData = [
@@ -10,18 +26,16 @@ async function exportTable(userId) {
 
     // Add data to worksheet data
     requestData.forEach(request => {
-        if(request.user_id === userId) { // Assuming the user id is in the 'user_id' field
-            wsData.push([
-                request.namaPengaju,
-                request.asalPengaju,
-                request.nomorHandphone,
-                request.judulRequest,
-                request.bentukRequest,
-                request.deadline,
-                request.status,
-                request.createdAt
-            ]);
-        }
+        wsData.push([
+            request.namaPengaju,
+            request.asalPengaju,
+            request.nomorHandphone,
+            request.judulRequest,
+            request.bentukRequest,
+            request.deadline,
+            request.status,
+            request.createdAt
+        ]);
     });
 
     // Create a workbook and worksheet

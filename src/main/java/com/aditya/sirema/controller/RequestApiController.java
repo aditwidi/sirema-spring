@@ -46,7 +46,7 @@ public class RequestApiController {
         return requestService.getRequests();
     }
 
-    @GetMapping("/user")
+    @GetMapping("user")
     public List<RequestDto> getRequestsByUserId(@RequestParam Long userId) {
         // Fetch requests for a specific user by userId
         return requestService.findRequestsByUserId(userId);
